@@ -30,6 +30,9 @@ export default function Home({ posts }) {
           <div className={styles.card}>
             <h2>{post.frontmatter.title}</h2>
             <p>{post.frontmatter.excerpt}</p>
+            <Link href={`/blog/${post.slug}`}>
+              <a className='btn'>Read More</a>
+            </Link>
           </div>
         ))}
         </div>
@@ -63,7 +66,7 @@ export async function getStaticProps() {
   })
   return {
     props: {
-      posts: posts.sort(sortByDate)
+      posts: posts
     },
   }
 }
