@@ -1,0 +1,64 @@
+---
+title: Module Federation
+date: Jan 4 2022
+excerpt: Scalable webpack solutions
+image: /images/mfe.png
+tags: ['webpack']
+---
+
+# Breaking down the frontend monolithic
+
+In 2018, react was hott, new, and intimidating. Create react app was the standard framework for react templates, and all the the other frameworks such as Next.js as gatsby were yet to be discovered by the majority.
+
+If we fast forward to 2022, I think most engineers would steer you towards using React, but not with `create react app`. When [webpack](https://webpack.js.org/) was released, it changed the way we work with react.
+
+To understand why, we need to layout the first initial problems we faced, following the solutions that webpack provided.
+
+### create react app
+
+1. **costly builds** - The builds are so expensive, companies are waisting to much money on just silly circumstances in their CICD pipelines, and their production servers or cloud storage like an s3 bucket.
+
+2. **single point of failure** - your entire app is bundled into one dist folder without a replacement strategy that is built into the client side itself.
+
+3. **difficult to customizee** - It is a very static approach to building your react app. It is possible to extend, but is not worth it compared to the alternatives.
+
+### webpack
+
+1. **Control of your environment**
+2. **Handle Server Side Rendering with ease**
+
+## Micro Frontends
+
+<img src="/images/mfe.png" />
+There is a webpack plugin called [Module Federation](https://webpack.js.org/concepts/module-federation/), which gives webpack the ability to load both local and remote modules at runtime in a controlled manner.
+
+**What does this mean?**
+
+Looking at the page below, there are two, what we would call `"applications"` running on this page.
+
+- Product fragment
+- Recommendation fragment
+
+Instead, let's think of this as a framework agnostic component running as a process hosted as a host and port.
+
+<CodeBlock language="javascript" value={`
+  module.exports = {
+    entry: './src/index',
+    mode: 'development',
+    plugins: [
+      new ModuleFederationPlugin({
+        name: 'app1',
+        remotes: {
+          app2: 'app2@http://localhost:3002/remoteEntry.js',
+        },
+        shared: [
+          'react',
+          'react-dom',
+        ],
+      }),
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+    }),
+  ],
+}
+  `} />
