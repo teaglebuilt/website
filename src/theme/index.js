@@ -1,12 +1,17 @@
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 
 const theme = {
-  primaryBackground: "##FFFAFF",
-  secondary: "#3E92CC",
-  navbar: "#0A2463",
-  footer: "#1E1B18",
-  fifth: "#D8315B",
-  primaryText: "#1E1B18",
+  mosGreen: '#009394',
+  white: '#ffffff',
+  lightGray: '#e0dad5',
+  secondaryGray: '#2b2a2a',
+  primaryGray: '#21201f',
+  black: '#000000',
+  apollo: '#ad9bf6BF',
+  graphql: '#e10098BF',
+  nextjs: '#ffffffBF',
+  react: '#61dafbBF',
+  typescript: '#3178c6BF',
 }
 
 const GlobalStyle = createGlobalStyle`
@@ -16,6 +21,10 @@ const GlobalStyle = createGlobalStyle`
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     transition: all 0.5s;
+  }
+
+  html.dark {
+    background-color: #333;
   }
 
   body.dark {
@@ -31,6 +40,6 @@ const GlobalStyle = createGlobalStyle`
 export default function RootThemeProvider({ children }) {
   return <>
     <GlobalStyle />
-    <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+    <ThemeProvider theme={theme}>{children}</ThemeProvider>
   </>
 }

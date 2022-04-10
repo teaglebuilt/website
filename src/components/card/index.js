@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Card = styled.div`
-  background: ${props => props.theme.secondary};
+  background: ${props => props.theme.lightGray};
   color: ${props => props.theme.primaryText}
   font-size: 1rem;
   padding: 1em;

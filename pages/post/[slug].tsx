@@ -14,7 +14,7 @@ export default function Post({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout>
-      <div style={{ width: '600px', margin: 'auto' }}>
+      <div style={{ width: '800px', margin: '100px'}}>
         <MDXRemote {...source} components={PostComponents} />
       </div>
     </Layout>

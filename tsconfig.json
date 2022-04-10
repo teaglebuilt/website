@@ -18,10 +18,13 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
+    "src/components/**/*.ts",
+    "src/components/**/*.tsx",
     "**/*.tsx",
     "src/layout/index.tsx",
-    "src/theme/index.js",
-    "pages/api/blog/[slug].js"
-  ],
+    "pages/api/blog/[slug].js",
+    "src/theme/icons/index.js",
+    "src/theme/index.js"
+, "lib/api.ts"  ],
   "exclude": ["node_modules"]
 }

@@ -1,20 +1,12 @@
-export type Tag = 'Angular' | 'Ionic' | 'React' | 'Next' | 'Nest' | 'Node';
+export type Tags = []
 
-export const tagFilters: Tag[] = [
-  'Angular',
-  'Ionic',
-  'React',
-  'Next',
-  'Nest',
-  'Node',
-];
 
 export interface MetaData {
   title: string;
   dateString: string;
   mainImageUrl: string;
   excerpt: string;
-  tags: Tag[];
+  tags: Tags[];
 }
 
 export interface Post {
