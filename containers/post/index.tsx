@@ -1,5 +1,5 @@
-import CardComponent from '../card';
-import ButtonContainer from '../button'
+import ButtonContainer from '../../src/components/button';
+import CardComponent from '../../src/components/card';
 import Tagbar from '../tags';
 
 const PostCard: React.FC = ({ post }) => {
@@ -7,7 +7,7 @@ const PostCard: React.FC = ({ post }) => {
     <CardComponent>
       <h2>{post.metaData.title}</h2>
       <p>{post.metaData.excerpt}</p>
-        {post.metaData.tags ? <Tagbar tags={post.metaData.tags} /> : ""}
+        {post.metaData.tags ? <Tagbar tags={post.metaData.tags} direction="row" margin={0} /> : ""}
       <ButtonContainer
         text={"Read More"}
         route={`/post/${post.slug}`} />

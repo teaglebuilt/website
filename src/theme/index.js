@@ -1,11 +1,11 @@
-import { ThemeProvider, createGlobalStyle } from "styled-components";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
 
 const theme = {
   mosGreen: '#009394',
   white: '#ffffff',
   lightGray: '#e0dad5',
-  secondaryGray: '#2b2a2a',
-  primaryGray: '#21201f',
+  secondaryGray: '#cdcfd1',
+  primaryGray: '#1e2a37',
   black: '#000000',
   apollo: '#ad9bf6BF',
   graphql: '#e10098BF',

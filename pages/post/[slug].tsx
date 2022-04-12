@@ -1,17 +1,18 @@
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import fs from 'fs';
-import path from 'path';
 import matter from 'gray-matter';
-import PostComponents from './post.styles';
-import { serialize } from 'next-mdx-remote/serialize';
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
-import imageSize from "rehype-img-size";
-import Layout from '../../src/layout';
+import { serialize } from 'next-mdx-remote/serialize';
+import path from 'path';
 import rehypeImgSize from 'rehype-img-size';
+import Layout from '../../src/layout';
+import PostComponents from './post.styles';
+
 
 export default function Post({
   source,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  console.log(source)
   return (
     <Layout>
       <div style={{ width: '800px', margin: '100px'}}>
@@ -49,8 +50,8 @@ export const getStaticProps: GetStaticProps<Params> = async ({
 
   const { data: metaData, content } = matter(article);
 
-  const mdxSource = await serialize(content, 
-    { 
+  const mdxSource = await serialize(content,
+    {
       scope: metaData,
       mdxOptions: {
         rehypePlugins: [

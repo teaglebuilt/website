@@ -1,11 +1,11 @@
-import { TagList, TagItem } from './tags.styles';
-import Icon from '../../theme/icons';
+import Icon from '../../src/theme/icons';
+import { TagItem, TagList } from './tags.styles';
 
 
-const Tagbar: React.FC = ({ tags, direction }) => {
+const Tagbar: React.FC = ({ tags, direction, margin }) => {
   console.log(tags)
   return (
-      <TagList direction={direction} >
+      <TagList direction={direction} margin={margin} >
         {tags.map((tag, index) => {
           return (
           <TagItem key={index}>

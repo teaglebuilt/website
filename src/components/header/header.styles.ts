@@ -3,18 +3,12 @@ import tw from 'twin.macro';
 
 export const StyledHeader = styled.header`
   ${tw`
+    h-24
+    sm:h-32
     flex
-    flex-row
-    flex-shrink-0
-    sticky
-    top-0
-    z-50
-    justify-start
-    align-middle
-    bg-gray-50
+    items-center
+    z-30
     w-full
-    py-2
-    mb-10
   `}
 `;
 
@@ -29,14 +23,22 @@ export const Title = styled.div`
 
 export const Navigation = styled.div`
   ${tw`
-    flex
-    flex-row
-    p-4
+    font-sans
+    text-gray-800
+    dark:text-white
+    uppercase
+    text-lg
+    lg:flex
+    items-center
+    hidden
   `}
 `;
 
 export const NavLink = styled.a`
   ${tw`
+    flex
+    py-2
     px-6
+  hover:text-green-200
   `}
 `;

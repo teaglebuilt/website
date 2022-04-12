@@ -1,9 +1,8 @@
-import '../styles/globals.css';
-import 'tailwindcss/tailwind.css';
-import { ThemeProvider } from 'styled-components';
-import type { AppProps } from 'next/app';
 import { MDXProvider } from "@mdx-js/react";
+import type { AppProps } from 'next/app';
+import 'tailwindcss/tailwind.css';
 import RootThemeProvider from '../src/theme';
+import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (

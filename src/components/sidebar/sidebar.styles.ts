@@ -8,10 +8,9 @@ export const SidebarContainer = styled.aside`
     align-middle
     sticky
     top-0
-    z-auto
-    overflow-y-auto
     w-1/4
     p-2
+    m-2
     order-2
   `}
 `;
