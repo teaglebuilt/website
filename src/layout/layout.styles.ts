@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import tw from "twin.macro";
+import tw from 'twin.macro';
 
 export const Container = styled.div`
   ${tw`
@@ -13,7 +13,7 @@ export const Container = styled.div`
     relative
     w-screen
     h-screen
-    overflow-hidden
+    flex-1
   `}
 `;
 
@@ -21,8 +21,8 @@ export const MainContent = styled.main`
   ${tw`
     flex
     flex-row
-    flex-grow
-    h-screen
+    h-full
+    overflow-hidden
   `}
 `;
 
@@ -30,11 +30,11 @@ export const PageContainer = styled.div`
   ${tw`
     flex
     flex-col
-    flex-1
+    flex-grow
     items-center
     justify-center
-    overflow-y-scroll
     w-3/4
-    order-1
+    overflow-y-auto
+    pt-60
   `}
 `;

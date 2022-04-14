@@ -1,25 +1,25 @@
-import styled from "styled-components";
 import Link from 'next/link';
+import React from 'react';
+import styled from 'styled-components';
+import tw from 'twin.macro';
 
 const Button = styled.a`
-  background: "#D8315B";
-  color: white;
-  font-size: 1rem;
-  padding: 0 3px 5px rgba(0,0,0,0.1);
-  cursor: pointer;
-  border: none;
-  border-radius: 4px;
-  display: flex;
-  flex-direction: row-reverse;
+  ${tw`
+    border-b-2
+    border-b-gray-200
+    text-gray-800
+    w-1/5
+    mx-auto
+    text-center
+  `}
 `;
 
-
 const ButtonContainer = ({ text, route }) => {
-  return(
+  return (
     <Link href={route} passHref>
       <Button>{text}</Button>
     </Link>
-  )
-}
+  );
+};
 
 export default ButtonContainer;

@@ -1,4 +1,4 @@
-import { MDXProvider } from "@mdx-js/react";
+import { MDXProvider } from '@mdx-js/react';
 import type { AppProps } from 'next/app';
 import 'tailwindcss/tailwind.css';
 import RootThemeProvider from '../src/theme';

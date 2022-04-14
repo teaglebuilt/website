@@ -30,7 +30,9 @@ To understand why, we need to layout the first initial problems we faced, follow
 ## Micro Frontends
 
 <img src="/images/mfe.png" />
-There is a webpack plugin called [Module Federation](https://webpack.js.org/concepts/module-federation/), which gives webpack the ability to load both local and remote modules at runtime in a controlled manner.
+There is a webpack plugin called [Module Federation](https://webpack.js.org/concepts/module-federation/),
+which gives webpack the ability to load both local and remote modules at runtime
+in a controlled manner.
 
 **What does this mean?**
 
@@ -41,7 +43,9 @@ Looking at the page below, there are two, what we would call `"applications"` ru
 
 Instead, let's think of this as a framework agnostic component running as a process hosted as a host and port.
 
-<CodeBlock language="javascript" value={`
+<CodeBlock
+  language="javascript"
+  value={`
   module.exports = {
     entry: './src/index',
     mode: 'development',
@@ -61,4 +65,5 @@ Instead, let's think of this as a framework agnostic component running as a proc
     }),
   ],
 }
-  `} />
+  `}
+/>

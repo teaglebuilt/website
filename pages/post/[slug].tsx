@@ -8,14 +8,13 @@ import rehypeImgSize from 'rehype-img-size';
 import Layout from '../../src/layout';
 import PostComponents from './post.styles';
 
-
 export default function Post({
   source,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  console.log(source)
+  console.log(source);
   return (
     <Layout>
-      <div style={{ width: '800px', margin: '100px'}}>
+      <div className="h-full w-3/4 ">
         <MDXRemote {...source} components={PostComponents} />
       </div>
     </Layout>
@@ -50,15 +49,11 @@ export const getStaticProps: GetStaticProps<Params> = async ({
 
   const { data: metaData, content } = matter(article);
 
-  const mdxSource = await serialize(content,
-    {
-      scope: metaData,
-      mdxOptions: {
-        rehypePlugins: [
-          [rehypeImgSize, { dir: "public"}]
-        ]
-      }
-    }
-  );
+  const mdxSource = await serialize(content, {
+    scope: metaData,
+    mdxOptions: {
+      rehypePlugins: [[rehypeImgSize, { dir: 'public' }]],
+    },
+  });
   return { props: { source: mdxSource } };
 };

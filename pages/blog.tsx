@@ -8,9 +8,8 @@ import { Post } from '../lib/types';
 import Layout from '../src/layout';
 
 const Blog: NextPage = ({
-  posts
+  posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-
   return (
     <Layout>
       {posts.map((post: Post, index: number) => (

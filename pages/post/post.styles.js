@@ -1,6 +1,6 @@
+import NextImage from 'next/image';
 import styled from 'styled-components';
 import CodeBlock from '../../src/components/codeBlock';
-import NextImage from 'next/image';
 
 const H1Post = styled.h1`
   color: red;
