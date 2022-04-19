@@ -1,4 +1,5 @@
 import SyntaxHighlighter from 'react-syntax-highlighter';
+import { a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/hljs/';
 
 type CodeBlockProps = {
   language: string;
@@ -6,7 +7,11 @@ type CodeBlockProps = {
 };
 
 const CodeBlock = ({ language, value }: CodeBlockProps) => {
-  return <SyntaxHighlighter language={language}>{value}</SyntaxHighlighter>;
+  return (
+    <SyntaxHighlighter language={language} style={a11yDark}>
+      {value}
+    </SyntaxHighlighter>
+  );
 };
 
 export default CodeBlock;

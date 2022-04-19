@@ -1,4 +1,4 @@
-import { createGlobalStyle, ThemeProvider } from "styled-components";
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 const theme = {
   mosGreen: '#009394',
@@ -12,7 +12,7 @@ const theme = {
   nextjs: '#ffffffBF',
   react: '#61dafbBF',
   typescript: '#3178c6BF',
-}
+};
 
 const GlobalStyle = createGlobalStyle`
   html, body {
@@ -36,10 +36,11 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-
 export default function RootThemeProvider({ children }) {
-  return <>
-    <GlobalStyle />
-    <ThemeProvider theme={theme}>{children}</ThemeProvider>
-  </>
+  return (
+    <>
+      <GlobalStyle />
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+    </>
+  );
 }

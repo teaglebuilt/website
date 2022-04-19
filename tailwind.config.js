@@ -1,6 +1,7 @@
 const colors = require('tailwindcss/colors');
 
 module.exports = {
+  darkMode: 'class',
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './containers/**/*.{js,ts,jsx,tsx}',
@@ -11,6 +12,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        akshar: ['Akshar', 'sans-serif'],
+      },
       screens: {
         'plus-2xl': { max: '1535px' },
         'plus-xl': { max: '1279px' },
@@ -19,11 +23,10 @@ module.exports = {
         'plus-sm': { max: '520px' },
       },
     },
-    darkMode: 'class',
-    //   colors: {
-    //     primary: colors.teal,
-    //     gray: colors.neutral,
-    //   },
+    // colors: {
+    //   primary: 'bg-gray-800',
+    //   gray: colors.neutral,
+    // },
     //   typography: (theme) => ({
     //     DEFAULT: {
     //       css: {

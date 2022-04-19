@@ -1,20 +1,27 @@
 import Icon from '../../src/theme/icons';
-import { TagItem, TagList } from './tags.styles';
-
+import { IconSpan, TagItem, TagList } from './tags.styles';
 
 const Tagbar: React.FC = ({ tags, direction, margin }) => {
-  console.log(tags)
+  console.log(tags);
   return (
-      <TagList direction={direction} margin={margin} >
-        {tags.map((tag, index) => {
-          return (
+    <TagList direction={direction} margin={margin}>
+      {tags.map((tag, index) => {
+        return (
           <TagItem key={index}>
-            <Icon name={tag} width={20} />
-            {tag}
+            {direction === 'column' ? (
+              <IconSpan right={'10px'} scale="scale(1.8)">
+                <Icon name={tag} width={20} />
+              </IconSpan>
+            ) : (
+              <IconSpan right={'5px'} scale="scale(1.4)">
+                <Icon name={tag} width={20} />
+              </IconSpan>
+            )}
+            <p className="font-sans text-xl">{tag}</p>
           </TagItem>
-          )
-        })}
-      </TagList>
+        );
+      })}
+    </TagList>
   );
 };
 

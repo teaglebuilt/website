@@ -3,6 +3,7 @@ import matter from 'gray-matter';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MDXRemote } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
+import Image from 'next/image';
 import path from 'path';
 import rehypeImgSize from 'rehype-img-size';
 import Layout from '../../src/layout';
@@ -14,15 +15,23 @@ export default function Post({
   console.log(source);
   return (
     <Layout>
-      <div className="h-full w-3/4 ">
-        <MDXRemote {...source} components={PostComponents} />
+      <div className="container flex flex-col justify-center w-5/6 h-screen relative overflow-hidden">
+        <div className="container overflow-y-auto mx-auto px-4">
+          <Image
+            src={source.scope.image}
+            width={800}
+            height={400}
+            className="rounded object-cover py-4 my-10"
+          />
+          <MDXRemote {...source} components={PostComponents} />
+        </div>
       </div>
     </Layout>
   );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const articlesDirectory = path.join('posts');
+  const articlesDirectory = path.join('content/posts');
 
   const files = fs.readdirSync(articlesDirectory);
 
@@ -45,7 +54,7 @@ type Params = {
 export const getStaticProps: GetStaticProps<Params> = async ({
   params: { slug },
 }: Params) => {
-  const article = fs.readFileSync(path.join('posts', slug + '.mdx'));
+  const article = fs.readFileSync(path.join('content/posts', slug + '.mdx'));
 
   const { data: metaData, content } = matter(article);
 

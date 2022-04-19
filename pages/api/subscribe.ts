@@ -1,36 +1,29 @@
-import sgMail from '@sendgrid/mail';
-import type { NextApiRequest, NextApiResponse } from 'next';
-import { subscribe } from '../../lib/redis';
 
-sgMail.setApiKey(`${process.env.SENDGRID_API_KEY}`);
+
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse,
+  res: NextApiResponse
 ) {
   const { email } = req.body;
-  console.log(email);
+
   if (!email) {
     return res.status(400).json({ error: 'Email is required' });
   }
 
-  const msg = {
-    to: `${process.env.EMAIL}`,
-    from: `${process.env.EMAIL}`,
-    subject: 'Confirm Subscription',
-    text: 'poop tastes like it smells...delicious',
-    html: '<strong>jimmy cracks corn but i honestly do not care.</strong>',
-  };
+  const result = await fetch('https://www.getrevue.co/api/v2/subscribers', {
+    method: 'POST',
+    headers: {
+      Authorization: `Token ${process.env.REVUE_API_KEY}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ email })
+  });
+  const data = await result.json();
 
-  try {
-    const result = await subscribe(email);
-    if (!result) {
-      res.status(200).json({ message: 'You are already subscribed!' });
-    }
-    await sgMail.send(msg);
-    res.json({ message: `Thankyou for subscribing! Please check your email.` });
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: 'Error sending email' });
+  if (!result.ok) {
+    return res.status(500).json({ error: data.error.email[0] });
   }
-}
+
+  return res

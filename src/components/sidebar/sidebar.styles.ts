@@ -8,7 +8,7 @@ export const SidebarContainer = styled.aside`
     align-middle
     sticky
     top-0
-    w-1/4
+    w-1/5
     p-2
     m-2
     order-2

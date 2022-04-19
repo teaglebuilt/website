@@ -6,7 +6,7 @@ const PostCard: React.FC = ({ post }) => {
   console.log(post);
   return (
     <CardComponent>
-      <article>
+      <article className="container">
         <img
           alt="blog photo"
           src={post.metaData.image}

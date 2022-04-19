@@ -7,7 +7,8 @@
 
 # testing
 /coverage
-
+yarn.lock
+yarn.error
 # next.js
 /.next/
 /out/

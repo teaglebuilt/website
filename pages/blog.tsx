@@ -12,11 +12,13 @@ const Blog: NextPage = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Layout>
-      {posts.map((post: Post, index: number) => (
-        <React.Fragment key={index}>
-          <PostCard post={post} />
-        </React.Fragment>
-      ))}
+      <div className="overflow-y-auto">
+        {posts.map((post: Post, index: number) => (
+          <React.Fragment key={index}>
+            <PostCard post={post} />
+          </React.Fragment>
+        ))}
+      </div>
     </Layout>
   );
 };
@@ -25,13 +27,13 @@ export default Blog;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   console.log('preview', context.previewData);
-  const articlesDirectory = path.join('posts');
+  const articlesDirectory = path.join('content/posts');
 
   const files = fs.readdirSync(articlesDirectory);
 
   const blogPosts = files.map((fileName: string) => {
     const slug = fileName.replace('.mdx', '');
-    const article = fs.readFileSync(path.join('posts', fileName));
+    const article = fs.readFileSync(path.join('content/posts', fileName));
     const { data: metaData } = matter(article);
     return { slug, metaData };
   });

@@ -19,22 +19,23 @@ export const Container = styled.div`
 
 export const MainContent = styled.main`
   ${tw`
+    container
     flex
     flex-row
-    h-full
+    h-screen
     overflow-hidden
+    relative
   `}
 `;
 
 export const PageContainer = styled.div`
   ${tw`
+    container
     flex
     flex-col
-    flex-grow
+    relative
     items-center
     justify-center
     w-3/4
-    overflow-y-auto
-    pt-60
   `}
 `;

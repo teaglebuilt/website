@@ -6,8 +6,8 @@ export default function DarkModeToggle() {
 
   useEffect(() => {
     darkMode
-      ? document.documentElement.classList.add('dark')
-      : document.documentElement.classList.remove('dark');
+      ? document.body.classList.add('dark')
+      : document.body.classList.remove('dark');
   }, [darkMode]);
 
   return (

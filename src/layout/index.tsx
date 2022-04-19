@@ -12,7 +12,15 @@ type LayoutProps = {
 };
 
 const Layout = ({ children }: LayoutProps): JSX.Element => {
-  const icons = ['Webpack', 'Python', 'Raspberry Pi'];
+  const icons = [
+    'Webpack',
+    'Python',
+    'Raspberry Pi',
+    'Kubernetes',
+    'Consul',
+    'Cloudfare',
+    'Pihole',
+  ];
   return (
     <>
       <RootThemeProvider>
@@ -21,7 +29,7 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
           <MainContent>
             <PageContainer>{children}</PageContainer>
             <Sidebar>
-              <Tagbar tags={icons} direction="column" margin={'2rem 0'} />
+              <Tagbar tags={icons} direction="column" margin={'2rem 2rem'} />
               <Subscribe />
             </Sidebar>
           </MainContent>

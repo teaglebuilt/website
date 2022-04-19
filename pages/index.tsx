@@ -1,8 +1,5 @@
-import fs from 'fs';
-import matter from 'gray-matter';
-import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
+import type { InferGetStaticPropsType, NextPage } from 'next';
 import Link from 'next/link';
-import path from 'path';
 import React from 'react';
 
 const Home: NextPage = ({
@@ -117,18 +114,3 @@ const Home: NextPage = ({
 };
 
 export default Home;
-
-export const getStaticProps: GetStaticProps = async (context) => {
-  console.log('preview', context.previewData);
-  const articlesDirectory = path.join('posts');
-
-  const files = fs.readdirSync(articlesDirectory);
-  const blogPosts = files.map((fileName: string) => {
-    const slug = fileName.replace('.mdx', '');
-    const article = fs.readFileSync(path.join('posts', fileName));
-    const { data: metaData } = matter(article);
-    return { slug, metaData };
-  });
-  console.log(blogPosts);
-  return { props: { posts: blogPosts } };
-};

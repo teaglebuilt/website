@@ -3,10 +3,11 @@ import tw from 'twin.macro';
 
 export const StyledHeader = styled.header`
   ${tw`
-    sm:h-16
+    container
     flex
     items-center
     w-full
+    relative
   `}
 `;
 

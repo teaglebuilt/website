@@ -38,12 +38,12 @@ const Subscribe: React.FC = () => {
   };
 
   return (
-    <div className="bg-white text-gray-800 w-5/6 md:w-1/2 lg:w-3/4 shadow m-auto border border-t-8 border-b-8 border-black mt-20 flex flex-col rounded-xl">
+    <div className="bg-white text-gray-800 w-full md:w-1/2 lg:w-full shadow m-auto border border-t-8 border-b-8 border-black mt-20 flex flex-col rounded-xl">
       <form className="p-4 flex flex-col" onSubmit={subscribe}>
         <p className="my-4">Get notified when I take a dump in the morning.</p>
         <input
           ref={inputEl}
-          className="p-1 w-full border-gray-200 bg-gray-50"
+          className="p-1 w-full border-gray-200 bg-gray-50 text-sm"
           type="email"
           name="email"
           placeholder="your email is required"

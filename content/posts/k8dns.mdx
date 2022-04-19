@@ -1,0 +1,58 @@
+---
+title: Kubernetes At Home (DNS)
+date: April 14, 2022
+excerpt: Part X of kubernetes at home series. Focusing on solving internal dns problems with solutions.
+image: /images/k8rpi.png
+tags: ['Kubernetes', 'Pihole']
+---
+
+# Part Four: Local DNS Configuration
+
+To access Pi-Hole admin, we are now going to deploy an Ingress, responsible of making accessible a service from outside the cluster by mapping an internal service:port to a host. To choose a host, we need to configure a DNS like we did for NextCloud “nextcloud.domain.com” in the previous article. However, unlike NextCloud, Pi-Hole have no reason to be exposed on the Internet, we can pick a host that will be resolved internally to our Nginx proxy (available at 192.168.0.240 : LoadBalancer IP). The simplest solution is to use nip.io which allows us to map an IP (in our case 192.168.0.240) to a hostname without touching /etc/hosts or configuring a DNS. Basically it resolves anything.ip.nip.io by ip without requiring anything else, Magic !
+
+## Pihole
+
+<CodeBlock
+  language="yaml"
+  value={`
+    apiVersion: helm.toolkit.fluxcd.io/v2beta1
+    kind: HelmRelease
+    metadata:
+      name: pihole
+      namespace: network
+    spec:
+      releaseName: pihole
+      chart:
+        spec:
+          chart: pihole
+          version: 2.5.3
+          sourceRef:
+            kind: HelmRepository
+            name: homecharts
+            namespace: flux-system
+      interval: 5m
+      values:
+        serviceWeb:
+          loadBalancerIP: ""
+        serviceTCP:
+          type: ClusterIP
+        serviceUDP:
+          type: ClusterIP
+        hostNetwork: true
+        privileged: true
+        ingress:
+          enabled: true
+          annotations:
+            kubernetes.io/ingress.class: nginx
+            cert-manager.io/issuer: self-signed-issuer
+          path: /
+          hosts:
+            - pihole.domain
+          tls:
+            - secretName: tls-internal-ca
+              hosts:
+                - pihole.domain
+`}
+/>
+
+## Connecting Devices

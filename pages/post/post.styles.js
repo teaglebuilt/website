@@ -1,9 +1,17 @@
 import NextImage from 'next/image';
 import styled from 'styled-components';
+import tw from 'twin.macro';
 import CodeBlock from '../../src/components/codeBlock';
 
 const H1Post = styled.h1`
-  color: red;
+  ${tw`
+    text-white
+    text-4xl
+    font-semibold
+    text-center
+    py-2
+    font-akshar
+  `}
 `;
 
 const H2Post = styled.h1`
@@ -19,7 +27,16 @@ const PostImage = styled(NextImage)`
 `;
 
 const Paragraph = styled.p`
-  color: ${props => props.theme.primaryText}
+  ${tw`
+    p-2
+    align-middle
+  `}
+`;
+
+const HR = styled.hr`
+  ${tw`
+    mb-4
+  `}
 `;
 
 const PostComponents = {
@@ -28,7 +45,8 @@ const PostComponents = {
   h3: H3Post,
   img: (props) => <PostImage {...props} loading="lazy" />,
   p: (props) => <Paragraph {...props} />,
-  CodeBlock
+  hr: HR,
+  CodeBlock,
 };
 
 export default PostComponents;
