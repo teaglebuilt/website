@@ -8,10 +8,11 @@ const Card = styled.div`
     flex
     flex-col
     bg-white
-    w-1/2
+    w-2/3
     shadow-lg
     text-gray-800
-    my-4
+    mt-4
+    mb-10
     mx-auto
     rounded
   `}

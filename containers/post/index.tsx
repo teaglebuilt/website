@@ -3,7 +3,6 @@ import CardComponent from '../../src/components/card';
 import Tagbar from '../tags';
 
 const PostCard: React.FC = ({ post }) => {
-  console.log(post);
   return (
     <CardComponent>
       <article className="container">

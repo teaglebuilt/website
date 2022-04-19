@@ -3,17 +3,12 @@ import tw from 'twin.macro';
 
 export const Container = styled.div`
   ${tw`
-    flex
-    flex-col
-    bg-gray-100
-    text-gray-800
-    dark:bg-gray-800
-    dark:text-gray-50
+  bg-white
+  dark:bg-gray-800
     font-mono
     relative
-    w-screen
+    overflow-hidden
     h-screen
-    flex-1
   `}
 `;
 
@@ -36,6 +31,7 @@ export const PageContainer = styled.div`
     relative
     items-center
     justify-center
+    overflow-y-auto
     w-3/4
   `}
 `;
