@@ -1,10 +1,14 @@
+import { useRouter } from 'next/router';
 import Subscribe from '../../containers/subscribe';
 import Tagbar from '../../containers/tags';
 import { MetaProps } from '../../lib/types';
-import Header from '../components/header';
 import Sidebar from '../components/sidebar';
 import RootThemeProvider from '../theme';
-import { Container, MainContent, PageContainer } from './layout.styles';
+import TerminalGlyph from './glyph';
+import Header from './header';
+import IndexHero from './hero';
+import { Container, PageContainer } from './layout.styles';
+import MainContent from './main';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -12,6 +16,7 @@ type LayoutProps = {
 };
 
 const Layout = ({ children }: LayoutProps): JSX.Element => {
+  const router = useRouter();
   const icons = [
     'Webpack',
     'Python',
@@ -21,18 +26,32 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
     'Cloudfare',
     'Pihole',
   ];
-  return (
-    <>
-      <RootThemeProvider>
-        <Container>
-          <Header />
-          <MainContent>
+
+  const mainComponents = (route) => {
+    switch (route) {
+      case '/':
+        return <IndexHero />;
+      case '/blog':
+        return (
+          <>
             <PageContainer>{children}</PageContainer>
             <Sidebar>
               <Tagbar tags={icons} direction="column" margin={'2rem 2rem'} />
               <Subscribe />
             </Sidebar>
-          </MainContent>
+          </>
+        );
+      default:
+        return '';
+    }
+  };
+  return (
+    <>
+      <RootThemeProvider>
+        <Container>
+          {router.pathname === '/' ? <TerminalGlyph /> : ''}
+          <Header />
+          <MainContent>{mainComponents(router.route)}</MainContent>
         </Container>
       </RootThemeProvider>
     </>
