@@ -1,6 +1,7 @@
 import React from 'react';
+import WebItems from './web';
 
-const Tabs = ({ color }) => {
+const Tabs = () => {
   const [openTab, setOpenTab] = React.useState(1);
   return (
     <>
@@ -91,14 +92,7 @@ const Tabs = ({ color }) => {
             <div className="px-4 py-5 flex-auto">
               <div className="tab-content tab-space">
                 <div className={openTab === 1 ? 'block' : 'hidden'} id="link1">
-                  <p>
-                    Collaboratively administrate empowered markets via
-                    plug-and-play networks. Dynamically procrastinate B2C users
-                    after installed base benefits.
-                    <br />
-                    <br /> Dramatically visualize customer directed convergence
-                    without revolutionary ROI.
-                  </p>
+                  <WebItems />
                 </div>
                 <div className={openTab === 2 ? 'block' : 'hidden'} id="link2">
                   <p>
@@ -136,7 +130,7 @@ const Tabs = ({ color }) => {
 export default function TabsRender() {
   return (
     <>
-      <Tabs color="pink" />
+      <Tabs />
     </>
   );
 }
