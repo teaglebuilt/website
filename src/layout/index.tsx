@@ -1,9 +1,9 @@
 import Subscribe from '../../containers/subscribe';
 import Tagbar from '../../containers/tags';
 import { MetaProps } from '../../lib/types';
-import Header from '../components/header';
 import Sidebar from '../components/sidebar';
 import RootThemeProvider from '../theme';
+import Header from './header';
 import { Container, MainContent, PageContainer } from './layout.styles';
 
 type LayoutProps = {

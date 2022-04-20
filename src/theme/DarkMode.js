@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
-export default function DarkModeToggle() {
+export default function DarkModeToggle(props) {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
@@ -18,8 +18,8 @@ export default function DarkModeToggle() {
       classNames="switch"
     >
       <svg
-        width="170"
-        height="70"
+        width={props.width}
+        height={props.height}
         viewBox="0 0 170 70"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
