@@ -11,27 +11,3 @@ export const Container = styled.div`
     h-screen
   `}
 `;
-
-export const MainContent = styled.main`
-  ${tw`
-    container
-    flex
-    flex-row
-    h-screen
-    overflow-hidden
-    relative
-  `}
-`;
-
-export const PageContainer = styled.div`
-  ${tw`
-    container
-    flex
-    flex-col
-    relative
-    items-center
-    justify-center
-    overflow-y-auto
-    w-3/4
-  `}
-`;

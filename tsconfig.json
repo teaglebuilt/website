@@ -25,7 +25,8 @@
     "src/layout/index.tsx",
     "pages/api/blog/[slug].js",
     "src/theme/icons/index.js",
-    "src/theme/index.js"
-, "lib/api.ts"  ],
+    "src/theme/index.js",
+    "lib/api.ts"
+  ],
   "exclude": ["node_modules"]
 }

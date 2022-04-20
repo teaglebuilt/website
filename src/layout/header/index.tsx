@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import DarkModeToggle from '../../theme/DarkMode';
 import { StyledHeader } from './header.styles';
@@ -20,21 +21,21 @@ const Header: React.FC = () => {
         </div>
         <div className="flex items-center">
           <nav className="font-sen text-gray-800 dark:text-white uppercase text-lg lg:flex items-center hidden">
-            <a href="/blog" className="py-2 px-6 flex hover:text-black">
-              Blog
-            </a>
-            <a href="/projects" className="py-2 px-6 flex hover:text-black">
-              Portfolio
-            </a>
-            <a href="#" className="py-2 px-6 flex hover:text-black">
-              Services
-            </a>
-            <a href="/academy" className="py-2 px-6 flex hover:text-black">
-              Academy
-            </a>
-            <a href="/contact" className="py-2 px-6 flex hover:text-black">
-              Contact
-            </a>
+            <Link href="/blog">
+              <a className="py-2 px-6 flex hover:text-black">Blog</a>
+            </Link>
+            <Link href="/services">
+              <a className="py-2 px-6 flex hover:text-black">Services</a>
+            </Link>
+            <Link href="/portfolio">
+              <a className="py-2 px-6 flex hover:text-black">Portfolio</a>
+            </Link>
+            <Link href="/academy">
+              <a className="py-2 px-6 flex hover:text-black">Academy</a>
+            </Link>
+            <Link href="/contact">
+              <a className="py-2 px-6 flex hover:text-black">Contact</a>
+            </Link>
           </nav>
           <button className="lg:hidden flex flex-col ml-4">
             <span className="w-6 h-1 bg-gray-800 dark:bg-white mb-1"></span>

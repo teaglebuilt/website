@@ -1,10 +1,9 @@
-import Subscribe from '../../containers/subscribe';
-import Tagbar from '../../containers/tags';
+import { useRouter } from 'next/router';
 import { MetaProps } from '../../lib/types';
-import Sidebar from '../components/sidebar';
 import RootThemeProvider from '../theme';
 import Header from './header';
-import { Container, MainContent, PageContainer } from './layout.styles';
+import { Container } from './layout.styles';
+import MainContent from './main';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -12,27 +11,14 @@ type LayoutProps = {
 };
 
 const Layout = ({ children }: LayoutProps): JSX.Element => {
-  const icons = [
-    'Webpack',
-    'Python',
-    'Raspberry Pi',
-    'Kubernetes',
-    'Consul',
-    'Cloudfare',
-    'Pihole',
-  ];
+  const router = useRouter();
+
   return (
     <>
       <RootThemeProvider>
         <Container>
           <Header />
-          <MainContent>
-            <PageContainer>{children}</PageContainer>
-            <Sidebar>
-              <Tagbar tags={icons} direction="column" margin={'2rem 2rem'} />
-              <Subscribe />
-            </Sidebar>
-          </MainContent>
+          <MainContent children={children} route={router.route} />
         </Container>
       </RootThemeProvider>
     </>

@@ -1,5 +1,5 @@
-export type Tags = []
-
+export type Tags = [];
+export type TagCount = Any;
 
 export interface MetaData {
   title: string;
@@ -7,6 +7,7 @@ export interface MetaData {
   mainImageUrl: string;
   excerpt: string;
   tags: Tags[];
+  draft: boolean;
 }
 
 export interface Post {
