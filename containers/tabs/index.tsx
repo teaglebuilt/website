@@ -1,4 +1,6 @@
 import React from 'react';
+import AutomationItems from './auto';
+import InfraItems from './infra';
 import ServiceItems from './service';
 import WebItems from './web';
 
@@ -99,17 +101,10 @@ const Tabs = () => {
                   <ServiceItems />
                 </div>
                 <div className={openTab === 3 ? 'block' : 'hidden'} id="link3">
-                  <p>
-                    Efficiently unleash cross-media information without
-                    cross-media value. Quickly maximize timely deliverables for
-                    real-time schemas.
-                    <br />
-                    <br /> Dramatically maintain clicks-and-mortar solutions
-                    without functional solutions.
-                  </p>
+                  <InfraItems />
                 </div>
                 <div className={openTab === 4 ? 'block' : 'hidden'} id="link4">
-                  <p>Automation is key</p>
+                  <AutomationItems />
                 </div>
               </div>
             </div>

@@ -19,8 +19,8 @@ const ServiceItems: React.FC = () => {
             </svg>
           </div>
           <div className="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-            <h2 className="text-gray-900 text-lg title-font font-medium mb-2">
-              Shooting Stars
+            <h2 className="text-gray-900 text-lg title-font font-bold mb-2">
+              (API) Application Programming Interface
             </h2>
             <p className="leading-relaxed text-base">
               Blue bottle crucifix vinyl post-ironic four dollar toast vegan
@@ -44,8 +44,8 @@ const ServiceItems: React.FC = () => {
         </div>
         <div className="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-200 sm:flex-row flex-col">
           <div className="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-            <h2 className="text-gray-900 text-lg title-font font-medium mb-2">
-              The Catalyzer
+            <h2 className="text-gray-900 text-lg title-font font-bold mb-2">
+              Event Driven Solutions
             </h2>
             <p className="leading-relaxed text-base">
               Blue bottle crucifix vinyl post-ironic four dollar toast vegan
@@ -98,8 +98,8 @@ const ServiceItems: React.FC = () => {
             </svg>
           </div>
           <div className="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-            <h2 className="text-gray-900 text-lg title-font font-medium mb-2">
-              The 400 Blows
+            <h2 className="text-gray-900 text-lg title-font font-bold mb-2">
+              Microservices
             </h2>
             <p className="leading-relaxed text-base">
               Blue bottle crucifix vinyl post-ironic four dollar toast vegan
@@ -121,9 +121,6 @@ const ServiceItems: React.FC = () => {
             </a>
           </div>
         </div>
-        <button className="flex mx-auto mt-20 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-          Button
-        </button>
       </div>
     </section>
   );

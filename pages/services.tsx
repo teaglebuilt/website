@@ -1,5 +1,6 @@
 import { NextPage } from 'next';
 import TabsRender from '../containers/tabs';
+import Team from '../containers/team';
 import Layout from '../src/layout';
 
 const Services: NextPage = ({ props }) => {
@@ -7,6 +8,7 @@ const Services: NextPage = ({ props }) => {
     <Layout>
       <section className="text-gray-600 body-font w-full">
         <div className="container mx-auto flex flex-wrap justify-center">
+          <Team />
           <TabsRender />
         </div>
       </section>
