@@ -1,18 +1,10 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-export const MainStyles = styled.main`
-  ${tw`
-    container
-    flex
-    flex-row
-    h-screen
-    overflow-hidden
-    relative
-    w-full
-    mx-auto
-  `}
-`;
+export const MainStyles = styled.main(({ isHidden }) => [
+  tw`container flex flex-row w-full mx-auto relative h-screen`,
+  isHidden ? tw`overflow-hidden` : tw``,
+]);
 
 export const PageContainer = styled.div`
   ${tw`

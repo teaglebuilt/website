@@ -1,4 +1,5 @@
 import React from 'react';
+import ServiceItems from './service';
 import WebItems from './web';
 
 const Tabs = () => {
@@ -95,15 +96,7 @@ const Tabs = () => {
                   <WebItems />
                 </div>
                 <div className={openTab === 2 ? 'block' : 'hidden'} id="link2">
-                  <p>
-                    Completely synergize resource taxing relationships via
-                    premier niche markets. Professionally cultivate one-to-one
-                    customer service with robust ideas.
-                    <br />
-                    <br />
-                    Dynamically innovate resource-leveling customer service for
-                    state of the art customer service.
-                  </p>
+                  <ServiceItems />
                 </div>
                 <div className={openTab === 3 ? 'block' : 'hidden'} id="link3">
                   <p>

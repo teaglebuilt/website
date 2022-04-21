@@ -12,17 +12,30 @@ type LayoutProps = {
 
 const Layout = ({ children }: LayoutProps): JSX.Element => {
   const router = useRouter();
-
-  return (
-    <>
-      <RootThemeProvider>
-        <Container>
-          <Header />
-          <MainContent children={children} route={router.route} />
-        </Container>
-      </RootThemeProvider>
-    </>
-  );
+  switch (router.route) {
+    case '/services':
+      return (
+        <>
+          <RootThemeProvider>
+            <Container>
+              <Header />
+              <MainContent children={children} route={router.route} />
+            </Container>
+          </RootThemeProvider>
+        </>
+      );
+    default:
+      return (
+        <>
+          <RootThemeProvider>
+            <Container isHidden>
+              <Header />
+              <MainContent children={children} route={router.route} />
+            </Container>
+          </RootThemeProvider>
+        </>
+      );
+  }
 };
 
 export default Layout;

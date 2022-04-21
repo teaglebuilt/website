@@ -17,7 +17,7 @@ const MainContent: React.FC = ({ children, route }) => {
   switch (route) {
     case '/blog':
       return (
-        <MainStyles>
+        <MainStyles isHidden>
           <PageContainer>{children}</PageContainer>
           <Sidebar>
             <Tagbar tags={icons} direction="column" margin={'2rem 2rem'} />
