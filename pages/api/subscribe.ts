@@ -1,10 +1,8 @@
-
-
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   const { email } = req.body;
 
@@ -16,14 +14,14 @@ export default async function handler(
     method: 'POST',
     headers: {
       Authorization: `Token ${process.env.REVUE_API_KEY}`,
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ email })
+    body: JSON.stringify({ email }),
   });
   const data = await result.json();
-
   if (!result.ok) {
     return res.status(500).json({ error: data.error.email[0] });
   }
 
-  return res
+  return res.status(201).json({ error: '' });
+}

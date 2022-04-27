@@ -46,6 +46,7 @@ const Subscribe: React.FC = () => {
           className="p-1 w-full border-gray-200 bg-gray-50 text-sm"
           type="email"
           name="email"
+          autoComplete="email"
           placeholder="your email is required"
           required
         />
