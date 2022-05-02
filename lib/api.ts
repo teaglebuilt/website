@@ -1,20 +1,18 @@
-import { promises as fsPromises } from 'fs';
+import * as fs from 'fs';
 import matter from 'gray-matter';
 import * as path from 'path';
 import { TagCount } from './types';
 
-export async function getAllPosts() {
+export function getAllPosts() {
   const postFilePath = path.join('content/posts');
-  const files = await fsPromises.readdir(postFilePath);
-  const blogPosts = files.map(async (fileName: string) => {
+  const files = fs.readdirSync(postFilePath);
+  const blogPosts = files.map((fileName: string) => {
     const slug = fileName.replace('.mdx', '');
-    const article = await fsPromises.readFile(
-      path.join('content/posts', fileName),
-    );
+    const article = fs.readFileSync(path.join('content/posts', fileName));
     const { data: metaData } = matter(article);
     return { slug, metaData };
   });
-  return { props: { posts: blogPosts } };
+  return blogPosts;
 }
 
 export async function getAllTags() {

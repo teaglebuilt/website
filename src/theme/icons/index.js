@@ -2,10 +2,13 @@ import {
   SiCloudflare,
   SiConsul,
   SiKubernetes,
+  SiMongodb,
   SiPihole,
   SiPython,
   SiRaspberrypi,
+  SiWeb3Dotjs,
   SiWebpack,
+  SiWebrtc,
 } from 'react-icons/si';
 import styled from 'styled-components';
 
@@ -46,6 +49,21 @@ const Icon = (props) => {
         color: #f38020;
       `;
       return <Cloudflare />;
+    case 'MongoDB':
+      const MongoDB = styled(SiMongodb)`
+        color: #47a248;
+      `;
+      return <MongoDB />;
+    case 'WebRTC':
+      const WebRTC = styled(SiWebrtc)`
+        color: #333333;
+      `;
+      return <WebRTC />;
+    case 'Web3':
+      const Web3 = styled(SiWeb3Dotjs)`
+        color: #f16822;
+      `;
+      return <Web3 />;
     default:
       return '';
   }

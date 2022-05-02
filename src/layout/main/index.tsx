@@ -12,6 +12,9 @@ const MainContent: React.FC = ({ children, route }) => {
     'Consul',
     'Cloudfare',
     'Pihole',
+    'MongoDB',
+    'Web3',
+    'WebRTC',
   ];
 
   switch (route) {

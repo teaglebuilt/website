@@ -1,0 +1,52 @@
+name: Deploy to Zeit (staging)
+
+on:
+  push:
+    branches-ignore:
+      - 'master'
+
+jobs:
+  # Configures the deployment environment, install dependencies (like node, npm, etc.) that are requirements for the upcoming jobs
+  # Ex: Necessary to run `yarn deploy`
+  setup-environment:
+    name: Setup deployment environment (Ubuntu 18.04 - Node 10.x)
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Installing node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+
+  start-staging-deployment:
+    name: Starts Zeit deployment (staging) (Ubuntu 18.04)
+    runs-on: ubuntu-18.04
+    needs: setup-environment
+    steps:
+      - uses: actions/checkout@v1
+      - name: Deploying on Zeit
+        run: |
+          ZEIT_DEPLOYMENT_OUTPUT=`yarn deploy:$(cat now.json | jq -r '.build.env.CUSTOMER_REF') --token $ZEIT_TOKEN`
+          ZEIT_DEPLOYMENT_URL=`echo $ZEIT_DEPLOYMENT_OUTPUT | egrep -o 'https?://[^ ]+.now.sh'`
+          echo "::set-env name=ZEIT_DEPLOYMENT_URL::$ZEIT_DEPLOYMENT_URL"
+          ZEIT_DEPLOYMENT_ALIAS=$(cat now.json | jq -r '.name')-${CURRENT_BRANCH##*/}.now.sh
+          echo "::set-env name=ZEIT_DEPLOYMENT_ALIAS::https://$ZEIT_DEPLOYMENT_ALIAS"
+          # npx now alias $ZEIT_DEPLOYMENT_URL https://$ZEIT_DEPLOYMENT_ALIAS --token $ZEIT_TOKEN
+        env:
+          ZEIT_TOKEN: ${{ secrets.ZEIT_TOKEN }} # Passing github's secret to the worker
+          CURRENT_BRANCH: ${{ github.ref }} # Passing current branch to worker
+
+      - name: Comment PR (Deployment failure)
+        uses: unsplash/comment-on-pr@master
+        if: failure()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_CI_PR_COMMENT }}
+        with:
+          msg: "[GitHub Actions]\nDeployment FAILED\n\t Commit ${{ github.sha }} failed to deploy to ${{ env.ZEIT_DEPLOYMENT_URL }} (click to see logs)"
+
+      - name: Comment PR (Deployment success)
+        uses: unsplash/comment-on-pr@master
+        if: success()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_CI_PR_COMMENT }}
+        with:
+          msg: "[GitHub Actions]\nDeployment SUCCESS\n\t Commit ${{ github.sha }} successfully deployed to ${{ env.ZEIT_DEPLOYMENT_URL }}\n\tDeployment aliased as ${{ env.ZEIT_DEPLOYMENT_ALIAS }}"

@@ -6,11 +6,12 @@ export const MainStyles = styled.main(({ isHidden }) => [
   isHidden ? tw`overflow-hidden` : tw``,
 ]);
 
-export const PageContainer = styled.div`
+export const PageContainer = styled.section`
   ${tw`
     container
     flex
     flex-col
+    flex-grow
     relative
     items-center
     justify-center
